@@ -1,1 +1,1 @@
-# 2022-fall-compsci186-lecture-codes
+# This repo is to share codes written in the lecture
