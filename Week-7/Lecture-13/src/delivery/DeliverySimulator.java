@@ -6,6 +6,10 @@ import java.util.Set;
 
 public class DeliverySimulator {
     public static Map<Location, Integer> locationsVisited(String directions) {
+        if (directions.isEmpty()) {
+            return null;
+        }
+
         Map<Location, Integer> locationCount = new HashMap<>();
         
         int x = 0, y = 0;

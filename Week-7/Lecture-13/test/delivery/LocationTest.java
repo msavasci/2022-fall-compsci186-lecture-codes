@@ -2,8 +2,7 @@ package delivery;
 
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 
 import org.junit.Test;
 
@@ -27,20 +26,16 @@ public class LocationTest {
 
     @Test
     public void testEmptyDirections() {
-        assertEquals(new HashSet<Location>(Arrays.asList(new Location(0,0))), DeliverySimulator.locationsVisited(""));
+        assertEquals(null, DeliverySimulator.locationsVisited(""));
     }
 
     @Test
     public void testSimple() {
-        assertEquals(new HashSet<Location>(Arrays.asList(new Location(0, 0), new Location(1, 0))),
-                DeliverySimulator.locationsVisited(">"));
+        assertEquals(new HashMap<Location, Integer>() {{put(new Location(0, 0), 1); put(new Location(1, 0), 1);}}, DeliverySimulator.locationsVisited(">"));
     }
 
     @Test
     public void testFour() {
-        assertEquals(
-                new HashSet<Location>(
-                        Arrays.asList(new Location(0, 0), new Location(0, 1), new Location(1, 1), new Location(1, 0))),
-                DeliverySimulator.locationsVisited("^>v<"));
+        assertEquals(new HashMap<Location, Integer>() {{put(new Location(0, 0), 2); put(new Location(0, 1), 1); put(new Location(1, 1), 1); put(new Location(1, 0), 1);}}, DeliverySimulator.locationsVisited("^>v<"));
     }
 }
