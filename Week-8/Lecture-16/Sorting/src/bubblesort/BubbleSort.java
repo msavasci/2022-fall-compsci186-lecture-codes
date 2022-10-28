@@ -1,7 +1,9 @@
 package bubblesort;
-import java.util.Random;
 
 public class BubbleSort {
+    public static int numberOfComparisons = 0;
+    public static int numberOfSwaps = 0;
+
     public static void swap(int[] array, int i, int j) {
         int tmp = array[i];
         array[i] = array[j];
@@ -10,8 +12,10 @@ public class BubbleSort {
 
     static void bubbleUp(int[] array, int stopIndex) {
         for (int i = 0; i < stopIndex; i++) {
+            numberOfComparisons++;
             if (array[i] > array[i + 1]) {
                 swap(array, i, i + 1);
+                numberOfSwaps++;
             }
         }
     }

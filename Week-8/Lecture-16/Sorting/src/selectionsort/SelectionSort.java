@@ -1,10 +1,14 @@
 package selectionsort;
 
 public class SelectionSort {
-    public static int minIndex(int[] array, int index) {
+    public static int numberOfComparisons = 0;
+    public static int numberOfSwaps = 0;
+
+    public static int indexOfMinumum(int[] array, int index) {
         int minIndex = index;
 
         for (int i = minIndex + 1; i < array.length; i++) {
+            numberOfComparisons++;
             if (array[i] < array[minIndex]) {
                 minIndex = i;
             }
@@ -20,10 +24,11 @@ public class SelectionSort {
     }
 
     public static int[] sort(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (i != minIndex(array, i)) {
-                swap(array, i, minIndex(array, i));
-            }
+        for (int i = 0; i < array.length - 1; i++) {
+            // if (i != indexOfMinumum(array, i)) {
+            swap(array, i, indexOfMinumum(array, i));
+            numberOfSwaps++;
+            // }
         }
 
         return array;
