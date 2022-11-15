@@ -1,47 +1,48 @@
 package queue;
 
 public class LinkedQueue<E> implements Queue<E> {
-    public Node<E> head;
+    public Node<E> front;
     public Node<E> tail;
     public int size;
 
     public LinkedQueue() {
-        this.head = null;
+        this.front = null;
         this.tail = null;
         this.size = 0;
     }
 
     @Override
     public void add(E e) {
-        Node<E> newNode = new Node<>(e);
-        
+        // We added to tail to make complexity constant.
+        Node<E> node = new Node<>(e);
+
         if (isEmpty()) {
-            this.head = newNode;
-            this.tail = newNode;
+            this.front = node;
+            this.tail = node;
         } else {
-            this.tail.next = newNode;
-            this.tail = newNode;
+            this.tail.next = node;
+            this.tail = node;
         }
-        
+
         this.size++;
     }
 
     @Override
     public E remove() {
-        E removedData = this.head.data;
-        this.head = this.head.next;
+        E data = this.front.data;
+        this.front = this.front.next;
 
-        if (this.size == 1) {
+        if (this.front == null) {
             this.tail = null;
         }
-        
+
         this.size--;
-        return removedData;
+        return data;
     }
 
     @Override
     public E peek() {
-        return this.head.data;
+        return this.front.data;
     }
 
     @Override
@@ -58,5 +59,6 @@ public class LinkedQueue<E> implements Queue<E> {
     public int size() {
         return this.size;
     }
-    
+
+
 }

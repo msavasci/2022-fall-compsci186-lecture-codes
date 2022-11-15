@@ -5,39 +5,28 @@ public class BoundedArrayStack<E> implements Stack<E> {
     int top;
 
     public BoundedArrayStack(int capacity) {
+        // Because of 'type erasure' in java
         this.array = (E[]) new Object[capacity];
         this.top = -1;
     }
 
     @Override
     public void push(E e) throws StackOverflowException {
-        if (isFull()) {
-            throw new StackOverflowException("StackOverflow Exception");
-        }
-
         this.top++;
         this.array[top] = e;
     }
 
     @Override
     public E pop() throws StackUnderflowException {
-        if (isEmpty()) {
-            throw new StackUnderflowException("StackUnderflow Exception");
-        }
-
-        E topElement = this.array[top];
-        this.array[top] = null;
-        top--;
+        E topElement = this.array[this.top];
+        // this.array[this.top] = null;
+        this.top--;
         return topElement;
     }
 
     @Override
     public E peek() throws StackUnderflowException {
-        if (isEmpty()) {
-            throw new StackUnderflowException("StackUnderflow Exception");
-        }
-        
-        return this.array[top];
+        return this.array[this.top];
     }
 
     @Override
@@ -47,7 +36,8 @@ public class BoundedArrayStack<E> implements Stack<E> {
 
     @Override
     public boolean isFull() {
-        return this.top == this.array.length - 1;
+        // TODO Auto-generated method stub
+        return top == this.array.length - 1;
     }
 
     @Override

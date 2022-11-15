@@ -5,7 +5,7 @@ public class Node<E> {
     public Node<E> next;
 
     public Node() {
-
+        this.next = null;
     }
 
     public Node(E data) {
