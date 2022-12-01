@@ -1,10 +1,4 @@
 class Hanoi {
-    public int numberOfDiscs;
-
-    public Hanoi(int numberOfDiscs) {
-        this.numberOfDiscs = numberOfDiscs;
-    }
-
     public void towerOfHanoi(int n, char source_rod, char aux_rod, char dest_rod) {
         if (n == 0) {
             return;

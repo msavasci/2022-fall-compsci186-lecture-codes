@@ -2,8 +2,9 @@ public class App {
     // Driver code
     public static void main(String args[])
     {
-        Hanoi hn = new Hanoi(3);
+        int numberOfDiscs = 3;
+        Hanoi hn = new Hanoi();
         // A, B and C are names of rods
-        hn.towerOfHanoi(hn.numberOfDiscs, 'A', 'B', 'C');
+        hn.towerOfHanoi(numberOfDiscs, 'A', 'B', 'C');
     }    
 }
